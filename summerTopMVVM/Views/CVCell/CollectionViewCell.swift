@@ -21,8 +21,10 @@ class CollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
         setup()
         constraint()
-        contentView.layer.borderColor = UIColor.systemPink.cgColor
+        contentView.layer.borderColor = UIColor.magenta.cgColor
         contentView.layer.borderWidth = CGFloat(3)
+        contentView.enableCornerRadius(radius: 20)
+        contentView.backgroundColor = .darkGray
     }
     
     var viewModel: CVCellViewModelProtocol? {
@@ -52,14 +54,18 @@ class CollectionViewCell: UICollectionViewCell {
         contentView.addSubview(stackView)
         [artistNameLabel, nameLabel, releaseLabel, image].forEach { stackView.addArrangedSubview($0) }
         [artistNameLabel, nameLabel, releaseLabel].forEach { $0.textAlignment = .center }
-        [artistNameLabel, nameLabel, releaseLabel].forEach { $0.textColor = .systemRed }
+        [artistNameLabel, nameLabel, releaseLabel].forEach { $0.textColor = .white }
         [artistNameLabel, nameLabel, releaseLabel].forEach { $0.adjustsFontSizeToFitWidth = true }
         [artistNameLabel, nameLabel, releaseLabel].forEach { $0.numberOfLines = 0 }
-        [artistNameLabel, nameLabel].forEach { $0.font = UIFont.boldSystemFont(ofSize: 20) }
-        releaseLabel.font = UIFont.italicSystemFont(ofSize: 18)
+        [artistNameLabel].forEach { $0.font = UIFont.boldSystemFont(ofSize: 22) }
+        [nameLabel].forEach { $0.font = UIFont.systemFont(ofSize: 19) }
+        releaseLabel.font = UIFont.italicSystemFont(ofSize: 16)
         
         stackView.axis = .vertical
         stackView.spacing = 5
+        
+        image.contentMode = .scaleToFill
+        
     }
     
     func constraint() {

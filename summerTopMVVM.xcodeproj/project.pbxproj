@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		01C99F8C100E370AC579D172 /* Pods_summerTopMVVM.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 766BBF6A299C6E7A2CA95FB9 /* Pods_summerTopMVVM.framework */; };
 		E407090A264EF17A00DE33BB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4070909264EF17A00DE33BB /* AppDelegate.swift */; };
 		E407090C264EF17A00DE33BB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E407090B264EF17A00DE33BB /* SceneDelegate.swift */; };
 		E4070913264EF17C00DE33BB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E4070912264EF17C00DE33BB /* Assets.xcassets */; };
@@ -35,6 +36,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		766BBF6A299C6E7A2CA95FB9 /* Pods_summerTopMVVM.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_summerTopMVVM.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		83DED3D387EE7DF25FC2EBA2 /* Pods-summerTopMVVM.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-summerTopMVVM.release.xcconfig"; path = "Target Support Files/Pods-summerTopMVVM/Pods-summerTopMVVM.release.xcconfig"; sourceTree = "<group>"; };
 		E4070906264EF17A00DE33BB /* summerTopMVVM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = summerTopMVVM.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4070909264EF17A00DE33BB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E407090B264EF17A00DE33BB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -62,6 +65,7 @@
 		E4EEDB022651A41D00FA2F55 /* CVCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVCellViewModel.swift; sourceTree = "<group>"; };
 		E4EEDB072651A73F00FA2F55 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		E4EEDB082651A73F00FA2F55 /* CollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CollectionViewCell.xib; sourceTree = "<group>"; };
+		E8E19C3DC88C381CBE1A9E90 /* Pods-summerTopMVVM.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-summerTopMVVM.debug.xcconfig"; path = "Target Support Files/Pods-summerTopMVVM/Pods-summerTopMVVM.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,17 +73,38 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				01C99F8C100E370AC579D172 /* Pods_summerTopMVVM.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		00235D66EABEF07BAE233A69 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E8E19C3DC88C381CBE1A9E90 /* Pods-summerTopMVVM.debug.xcconfig */,
+				83DED3D387EE7DF25FC2EBA2 /* Pods-summerTopMVVM.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		0291AC02EBAE7C224CBB90E2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				766BBF6A299C6E7A2CA95FB9 /* Pods_summerTopMVVM.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		E40708FD264EF17A00DE33BB = {
 			isa = PBXGroup;
 			children = (
 				E4070908264EF17A00DE33BB /* summerTopMVVM */,
 				E4070907264EF17A00DE33BB /* Products */,
+				00235D66EABEF07BAE233A69 /* Pods */,
+				0291AC02EBAE7C224CBB90E2 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -195,9 +220,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E407091A264EF17C00DE33BB /* Build configuration list for PBXNativeTarget "summerTopMVVM" */;
 			buildPhases = (
+				B2F89E674C08268844D3D3C6 /* [CP] Check Pods Manifest.lock */,
 				E4070902264EF17A00DE33BB /* Sources */,
 				E4070903264EF17A00DE33BB /* Frameworks */,
 				E4070904264EF17A00DE33BB /* Resources */,
+				705A1EB8D0035EDBF51D1C13 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -252,6 +279,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		705A1EB8D0035EDBF51D1C13 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-summerTopMVVM/Pods-summerTopMVVM-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-summerTopMVVM/Pods-summerTopMVVM-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-summerTopMVVM/Pods-summerTopMVVM-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B2F89E674C08268844D3D3C6 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-summerTopMVVM-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		E4070902264EF17A00DE33BB /* Sources */ = {
@@ -415,6 +484,7 @@
 		};
 		E407091B264EF17C00DE33BB /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E8E19C3DC88C381CBE1A9E90 /* Pods-summerTopMVVM.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -434,6 +504,7 @@
 		};
 		E407091C264EF17C00DE33BB /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 83DED3D387EE7DF25FC2EBA2 /* Pods-summerTopMVVM.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

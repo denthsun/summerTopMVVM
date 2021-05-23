@@ -27,7 +27,6 @@ class TopViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemTeal
         register()
         setLayout()
         setup()
@@ -56,7 +55,7 @@ class TopViewController: UIViewController {
         collectionView.dataSource = self
         
         stackView.axis = .vertical
-        stackView.spacing = 10
+       // stackView.spacing = 10
         stackView.distribution = .fillEqually
         topLabel.text = "YOYO hi there"
         
@@ -71,8 +70,8 @@ class TopViewController: UIViewController {
         africanButton.setTitle("Africa", for: .normal)
         
         topLabel.text = viewModel?.titleLabel
-        topLabel.textColor = .systemBlue
-        topLabel.font = UIFont.boldSystemFont(ofSize: 20)
+        topLabel.textColor = .white
+        topLabel.font = UIFont.boldSystemFont(ofSize: 29)
         topLabel.textAlignment = .center
 
     }
@@ -86,6 +85,7 @@ class TopViewController: UIViewController {
         topLabel.anchor(top: view.safeAreaLayoutGuide.topAnchor, leading: view.safeAreaLayoutGuide.leadingAnchor, bottom: stackView.topAnchor, trailing: view.safeAreaLayoutGuide.trailingAnchor)
         stackView.anchor(top: topLabel.bottomAnchor, leading: view.safeAreaLayoutGuide.leadingAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, trailing: collectionView.leadingAnchor)
         collectionView.anchor(top: topLabel.bottomAnchor, leading: stackView.trailingAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, trailing: view.safeAreaLayoutGuide.trailingAnchor)
+        stackView.widthAnchor.constraint(equalToConstant: view.frame.width / 4).isActive = true
         
     }
     
@@ -127,6 +127,5 @@ extension TopViewController: UICollectionViewDelegate, UICollectionViewDataSourc
         
         return cell
     }
-    
     
 }

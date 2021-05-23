@@ -6,18 +6,19 @@
 //
 
 import UIKit
+import TransitionButton
 
 class EnterViewController: UIViewController {
     
     let viewModel = EnterVCViewModel()
     
     let greetingLabel = UILabel()
-    let spinner = UIActivityIndicatorView(style: .large)
+    let spinner = TransitionButton()
     let stackView = UIStackView()
     
     let podcastsButton = GradientButton(colors: [UIColor.systemRed.cgColor, UIColor.systemBlue.cgColor])
     let booksButton = GradientButton(colors: [UIColor.systemYellow.cgColor, UIColor.systemPink.cgColor])
-    let filmsButton = GradientButton(colors: [UIColor.systemTeal.cgColor, UIColor.systemGreen.cgColor])
+    let appsButton = GradientButton(colors: [UIColor.systemTeal.cgColor, UIColor.systemGreen.cgColor])
     
     var currentArrayBlyat = CurrentDataModel(usa: [Results(artistName: "", releaseDate: "", name: "", artworkUrl100: "")], german: [Results(artistName: "", releaseDate: "", name: "", artworkUrl100: "")], italian: [Results(artistName: "", releaseDate: "", name: "", artworkUrl100: "")], african: [Results(artistName: "", releaseDate: "", name: "", artworkUrl100: "")])
     
@@ -32,18 +33,18 @@ class EnterViewController: UIViewController {
     
     func setup() {
         [greetingLabel, spinner, stackView].forEach { view.addSubview($0) }
-        spinner.startAnimating()
-        spinner.color = .systemRed
-        spinner.hidesWhenStopped = true
+      
+        spinner.spinnerColor = .magenta
+        spinner.startAnimation()
         
-        greetingLabel.text = viewModel.greetingsString
+        greetingLabel.text = "downloading..."
         greetingLabel.textAlignment = .center
-        greetingLabel.textColor = .systemRed
+        greetingLabel.textColor = .systemYellow
         greetingLabel.font = UIFont.boldSystemFont(ofSize: 30)
         greetingLabel.adjustsFontSizeToFitWidth = true
         greetingLabel.numberOfLines = 0
         
-        [podcastsButton, booksButton, filmsButton].forEach { stackView.addArrangedSubview($0) }
+        [podcastsButton, booksButton, appsButton].forEach { stackView.addArrangedSubview($0) }
         
         stackView.axis = .vertical
         stackView.distribution = .fillEqually
@@ -51,11 +52,11 @@ class EnterViewController: UIViewController {
         
         podcastsButton.setTitle(viewModel.podcastsButton, for: .normal)
         booksButton.setTitle(viewModel.booksButton, for: .normal)
-        filmsButton.setTitle(viewModel.filmsButton, for: .normal)
+        appsButton.setTitle(viewModel.appsButton, for: .normal)
         
         podcastsButton.addTarget(self, action: #selector(podcastTap), for: .touchUpInside)
         booksButton.addTarget(self, action: #selector(bookTap), for: .touchUpInside)
-        filmsButton.addTarget(self, action: #selector(filmTap), for: .touchUpInside)
+        appsButton.addTarget(self, action: #selector(filmTap), for: .touchUpInside)
         
         stackView.alpha = 0
     }
@@ -71,17 +72,17 @@ class EnterViewController: UIViewController {
         viewModel.booksRequests()
         viewModel.filmsRequests()
         viewModel.podcastsRequests()
-   
+        
         viewModel.myGroup.notify(queue: DispatchQueue.main) {
-            
-            self.spinner.stopAnimating()
-            self.stackView.alpha = 1
-            
+            self.spinner.stopAnimation(animationStyle: .shake, revertAfterDelay: 1) {
+                self.stackView.alpha = 1
+                self.greetingLabel.text = self.viewModel.greetingsString
+                self.greetingLabel.alpha = 1
+            }
         }
-      }
+    }
     
     @objc func filmTap() {
-        
         currentArrayBlyat = viewModel.commonFilms
         
         let vc = TopViewController()
@@ -90,7 +91,6 @@ class EnterViewController: UIViewController {
     }
     
     @objc func podcastTap() {
-        
         currentArrayBlyat = viewModel.commonPodcasts
         
         let vc = TopViewController()
@@ -100,9 +100,7 @@ class EnterViewController: UIViewController {
     }
     
     @objc func bookTap() {
-        
         currentArrayBlyat = viewModel.commonBooks 
-        
         
         let vc = TopViewController()
         vc.viewModel = viewModel.viewModelBooks()

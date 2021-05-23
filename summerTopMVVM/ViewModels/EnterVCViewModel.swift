@@ -9,8 +9,6 @@ import Foundation
 
 class EnterVCViewModel: EnterVCViewModelProtocol {
 
-    
-    
     var commonBooks = CurrentDataModel(usa: [Results(artistName: "", releaseDate: "", name: "", artworkUrl100:  "")], german: [Results(artistName: "", releaseDate: "", name: "", artworkUrl100: "")], italian: [Results(artistName: "", releaseDate: "", name: "", artworkUrl100: "")], african: [Results(artistName: "", releaseDate: "", name: "", artworkUrl100: "")])
     var commonPodcasts = CurrentDataModel(usa: [Results(artistName: "", releaseDate: "", name: "", artworkUrl100:  "")], german: [Results(artistName: "", releaseDate: "", name: "", artworkUrl100: "")], italian: [Results(artistName: "", releaseDate: "", name: "", artworkUrl100: "")], african: [Results(artistName: "", releaseDate: "", name: "", artworkUrl100: "")])
     var commonFilms = CurrentDataModel(usa: [Results(artistName: "", releaseDate: "", name: "", artworkUrl100:  "")], german: [Results(artistName: "", releaseDate: "", name: "", artworkUrl100: "")], italian: [Results(artistName: "", releaseDate: "", name: "", artworkUrl100: "")], african: [Results(artistName: "", releaseDate: "", name: "", artworkUrl100: "")])
@@ -36,9 +34,9 @@ class EnterVCViewModel: EnterVCViewModelProtocol {
     
     let myGroup = DispatchGroup()
     
-    var greetingsString: String = "Hello, welcome to ITunes top chart"
+    var greetingsString: String = "Latest popular podcasts, apps and books"
     
-    let filmsButton = "FILMS"
+    let appsButton = "Apps"
     let podcastsButton = "PODCASTS"
     let booksButton = "BOOKS"
     
@@ -47,7 +45,7 @@ class EnterVCViewModel: EnterVCViewModelProtocol {
         let myQueue = DispatchQueue(label: "com.my.queue")
         let runQueue = DispatchQueue.global(qos: .utility)
         
-        runQueue.async {
+        runQueue.sync {
             self.booksFetcher.usaRequest { (usaBooks) in
                 self.usaCurrentBooks = usaBooks?.feed.results ?? [Results(artistName: "", releaseDate: "", name: "", artworkUrl100: "")]
                 myQueue.sync {
@@ -89,7 +87,7 @@ class EnterVCViewModel: EnterVCViewModelProtocol {
         let myQueue = DispatchQueue(label: "com.my.queue")
         let runQueue = DispatchQueue.global(qos: .utility)
         
-        runQueue.async {
+        runQueue.sync {
             self.podcastsFetcher.usaRequest { (usaPodcast) in
                 self.usaCurrentPodcasts = usaPodcast?.feed.results ?? [Results(artistName: "", releaseDate: "", name: "", artworkUrl100: "")]
                 myQueue.sync {
@@ -131,7 +129,7 @@ class EnterVCViewModel: EnterVCViewModelProtocol {
         let myQueue = DispatchQueue(label: "com.my.queue")
         let runQueue = DispatchQueue.global(qos: .utility)
         
-        runQueue.async {
+        runQueue.sync {
             
             self.filmsFetcher.usaRequest { (usaFilm) in
                 self.usaCurrentFilms = usaFilm?.feed.results ?? [Results(artistName: "", releaseDate: "", name: "", artworkUrl100: "")]
