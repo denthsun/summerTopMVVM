@@ -10,7 +10,7 @@ import UIKit
 class CollectionViewCell: UICollectionViewCell {
     
     static let identifier = "CollectionViewCell"
-
+    
     let stackView = UIStackView()
     let artistNameLabel = UILabel()
     let nameLabel = UILabel()
@@ -29,6 +29,7 @@ class CollectionViewCell: UICollectionViewCell {
     
     var viewModel: CVCellViewModelProtocol? {
         willSet(viewModel) {
+            self.image.image = nil
             guard let viewModel = viewModel else { return }
             artistNameLabel.text = viewModel.artistName
             nameLabel.text = viewModel.name
@@ -39,11 +40,10 @@ class CollectionViewCell: UICollectionViewCell {
             let queue = DispatchQueue.global(qos: .utility)
             
             queue.async {
-                if let data = try? Data(contentsOf: url) {
-                    DispatchQueue.main.async {
-                        if imageUrl == imageUrl {
-                            self.image.image = UIImage(data: data)
-                        }
+                guard let data = try? Data(contentsOf: url) else { return }
+                DispatchQueue.main.async {
+                    if url == url {
+                        self.image.image = UIImage(data: data)
                     }
                 }
             }
@@ -76,5 +76,5 @@ class CollectionViewCell: UICollectionViewCell {
     static func nib() -> UINib {
         return UINib(nibName: "CollectionViewCell", bundle: nil)
     }
-
+    
 }
